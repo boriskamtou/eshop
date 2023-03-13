@@ -12,7 +12,7 @@ class EmailAndPasswordSignInScreenController
   final FakeAuthRepository fakeAuthRepository;
 
   Future<bool> submit(String email, String password) async {
-    state = state.copyWith(value: const AsyncValue.loading());
+    state = state.copyWith(value: const AsyncValue<void>.loading());
     final value = await AsyncValue.guard(() => _authenticate(email, password));
     state = state.copyWith(value: value);
     return value.hasError == false;
